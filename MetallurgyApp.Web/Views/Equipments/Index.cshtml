@@ -1,0 +1,52 @@
+@using MetallurgyApp.Web.Models
+@model IEnumerable<Equipment>
+@{ ViewData["Title"] = "Оборудование"; }
+
+<h2>Оборудование</h2>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-auto">
+        <input name="search" value="@ViewBag.Search" class="form-control" placeholder="Поиск" />
+    </div>
+    <div class="col-auto">
+        <select name="state" class="form-select" asp-items="Html.GetEnumSelectList<EquipmentState>()">
+            <option value="">— Все состояния —</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <select name="areaId" class="form-select" asp-items="ViewBag.Areas">
+            <option value="">— Все участки —</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary">Фильтр</button>
+        <a asp-action="Index" class="btn btn-secondary">Сброс</a>
+        <a asp-action="Create" class="btn btn-success">+ Добавить</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Название</th><th>Модель</th><th>Производитель</th>
+            <th>Год</th><th>Состояние</th><th>Участок</th><th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var e in Model)
+    {
+        <tr>
+            <td>@e.Name</td>
+            <td>@e.Model</td>
+            <td>@e.Manufacturer</td>
+            <td>@e.ManufactureYear</td>
+            <td>@Html.DisplayFor(_ => e.State)</td>
+            <td>@e.ProductionArea?.Name</td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@e.Id" class="btn btn-sm btn-warning">Изменить</a>
+                <a asp-action="Delete" asp-route-id="@e.Id" class="btn btn-sm btn-danger">Удалить</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

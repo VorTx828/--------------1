@@ -1,0 +1,40 @@
+@model MetallurgyApp.Web.Models.Equipment
+@{ ViewData["Title"] = "Новое оборудование"; }
+
+<h2>Новое оборудование</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Model" class="form-label"></label>
+        <input asp-for="Model" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Manufacturer" class="form-label"></label>
+        <input asp-for="Manufacturer" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="ManufactureYear" class="form-label"></label>
+        <input asp-for="ManufactureYear" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="State" class="form-label"></label>
+        <select asp-for="State" asp-items="Html.GetEnumSelectList<MetallurgyApp.Web.Models.EquipmentState>()" class="form-select"></select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ProductionAreaId" class="form-label"></label>
+        <select asp-for="ProductionAreaId" asp-items="ViewBag.Areas" class="form-select">
+            <option value="">— выберите участок —</option>
+        </select>
+        <span asp-validation-for="ProductionAreaId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

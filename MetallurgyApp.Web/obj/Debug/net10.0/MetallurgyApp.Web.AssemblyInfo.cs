@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetallurgyApp.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75d57851c9bc85b7eb0965914562b77bb29f8734")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d716f228e816facaef16a9468168d80db2695de")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetallurgyApp.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetallurgyApp.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,50 @@
+@model IEnumerable<MetallurgyApp.Web.Models.ProductionArea>
+@{ ViewData["Title"] = "Производственные участки"; }
+
+<h2>Производственные участки</h2>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-auto">
+        <input name="search" value="@ViewBag.Search" class="form-control" placeholder="Поиск по названию/начальнику" />
+    </div>
+    <div class="col-auto">
+        <select name="workshop" class="form-select">
+            <option value="">— Все цеха —</option>
+            @foreach (var w in (List<string>)ViewBag.Workshops)
+            {
+                <option value="@w" selected="@(w == (string?)ViewBag.Workshop)">@w</option>
+            }
+        </select>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary">Фильтр</button>
+        <a asp-action="Index" class="btn btn-secondary">Сброс</a>
+        <a asp-action="Create" class="btn btn-success">+ Добавить</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Название</th><th>Цех</th><th>Начальник</th>
+            <th>Дата ввода</th><th>Оборудование</th><th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.Name</td>
+            <td>@a.Workshop</td>
+            <td>@a.Head</td>
+            <td>@a.CommissionedAt.ToString("dd.MM.yyyy")</td>
+            <td>@a.Equipments.Count</td>
+            <td class="text-end">
+                <a asp-action="Details" asp-route-id="@a.Id" class="btn btn-sm btn-info">Детали</a>
+                <a asp-action="Edit" asp-route-id="@a.Id" class="btn btn-sm btn-warning">Изменить</a>
+                <a asp-action="Delete" asp-route-id="@a.Id" class="btn btn-sm btn-danger">Удалить</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

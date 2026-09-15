@@ -1,0 +1,29 @@
+@model MetallurgyApp.Web.Models.ProductionArea
+@{ ViewData["Title"] = "Новый участок"; }
+
+<h2>Новый участок</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Workshop" class="form-label"></label>
+        <input asp-for="Workshop" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Head" class="form-label"></label>
+        <input asp-for="Head" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CommissionedAt" class="form-label"></label>
+        <input asp-for="CommissionedAt" type="date" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

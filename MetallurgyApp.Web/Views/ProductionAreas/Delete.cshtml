@@ -1,0 +1,17 @@
+@model MetallurgyApp.Web.Models.ProductionArea
+@{ ViewData["Title"] = "Удаление участка"; }
+
+<h2>Удалить участок?</h2>
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Name)</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Workshop)</dt>
+    <dd class="col-sm-9">@Model.Workshop</dd>
+    <dt class="col-sm-3">Оборудование</dt>
+    <dd class="col-sm-9">@Model.Equipments.Count ед. (будут удалены)</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
