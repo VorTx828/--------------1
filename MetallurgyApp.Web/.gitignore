@@ -4,7 +4,11 @@
 ## Get latest from `dotnet new gitignore`
 
 ## user databases
-./*.db
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
 
 
 # dotenv files
